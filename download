@@ -1,0 +1,14 @@
+# Wi-Fi password and Firebase host filled in on each laptop.
+firmware/secrets.h
+
+# Dashboard secrets and build output.
+dashboard/.env
+dashboard/.env.local
+dashboard/node_modules/
+dashboard/dist/
+dashboard/.vercel/
+
+# OS and editor noise.
+.DS_Store
+Thumbs.db
+*.log

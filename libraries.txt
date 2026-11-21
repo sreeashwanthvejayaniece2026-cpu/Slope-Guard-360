@@ -1,0 +1,9 @@
+Install these from Arduino IDE → Library Manager:
+
+- Adafruit MPU6050
+- Adafruit Unified Sensor
+- Adafruit BusIO
+- ArduinoJson  (version 7 or newer)
+
+WiFi, HTTPClient, and WiFiClientSecure are part of the ESP32 board package.
+Do not install a separate "Firebase Arduino" library. This project talks to Firebase with HTTPClient.

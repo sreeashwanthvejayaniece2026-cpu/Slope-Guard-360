@@ -1,0 +1,41 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "nodes": {
+      ".read": true,
+      "$id": {
+        ".write": "( $id === 'node01' || $id === 'node02' ) && newData.child('nodeId').val() === $id && newData.child('tiltX').isNumber() && newData.child('tiltX').val() >= -180 && newData.child('tiltX').val() <= 180 && newData.child('tiltY').isNumber() && newData.child('tiltY').val() >= -180 && newData.child('tiltY').val() <= 180 && newData.child('tilt').isNumber() && newData.child('tilt').val() >= 0 && newData.child('tilt').val() <= 180 && newData.child('moisture').isNumber() && newData.child('moisture').val() >= 0 && newData.child('moisture').val() <= 100 && newData.child('rawMoisture').isNumber() && newData.child('rawMoisture').val() >= 0 && newData.child('rawMoisture').val() <= 4095 && newData.child('status').val().matches(/^(normal|caution|warning)$/) && newData.child('reason').val().matches(/^(none|tilt|moisture|rain|moisture\\+rain)$/) && newData.child('rssi').isNumber() && newData.child('rssi').val() >= -127 && newData.child('rssi').val() <= 0 && newData.child('ts').isNumber() && ( !newData.hasChild('rainWet') || newData.child('rainWet').isBoolean() ) && ( !newData.hasChild('rawRain') || ( newData.child('rawRain').isNumber() && newData.child('rawRain').val() >= 0 && newData.child('rawRain').val() <= 4095 ) )"
+      }
+    },
+
+    "history": {
+      ".read": true,
+      "$id": {
+        "$slot": {
+          ".write": "( $id === 'node01' || $id === 'node02' ) && $slot.matches(/^(?:[0-9]|[1-9][0-9])$/) && newData.child('nodeId').val() === $id && newData.child('tiltX').isNumber() && newData.child('tiltY').isNumber() && newData.child('tilt').isNumber() && newData.child('tilt').val() >= 0 && newData.child('tilt').val() <= 180 && newData.child('moisture').isNumber() && newData.child('moisture').val() >= 0 && newData.child('moisture').val() <= 100 && newData.child('rawMoisture').isNumber() && newData.child('status').val().matches(/^(normal|caution|warning)$/) && newData.child('reason').val().matches(/^(none|tilt|moisture|rain|moisture\\+rain)$/) && newData.child('rssi').isNumber() && newData.child('ts').isNumber()"
+        }
+      }
+    },
+
+    "alerts": {
+      ".read": true,
+      "$pushId": {
+        ".write": "newData.child('nodeId').val().matches(/^(node01|node02)$/) && newData.child('parameter').val().matches(/^(none|tilt|moisture|rain|moisture\\+rain)$/) && newData.child('level').val().matches(/^(normal|caution|warning)$/) && newData.child('ts').isNumber()"
+      }
+    },
+
+    "thresholds": {
+      ".read": true,
+      ".write": "newData.child('tiltCaution').isNumber() && newData.child('tiltCaution').val() > 0 && newData.child('tiltCaution').val() < 45 && newData.child('tiltWarning').isNumber() && newData.child('tiltWarning').val() > newData.child('tiltCaution').val() && newData.child('tiltWarning').val() <= 90 && newData.child('moistureCaution').isNumber() && newData.child('moistureCaution').val() >= 0 && newData.child('moistureCaution').val() < 100 && newData.child('moistureWarning').isNumber() && newData.child('moistureWarning').val() > newData.child('moistureCaution').val() && newData.child('moistureWarning').val() <= 100 && newData.child('offlineSeconds').isNumber() && newData.child('offlineSeconds').val() >= 5 && newData.child('offlineSeconds').val() <= 300"
+    },
+
+    "commands": {
+      ".read": true,
+      "$id": {
+        ".write": "( $id === 'node01' || $id === 'node02' ) && newData.child('rebaseline').isNumber() && newData.child('rebaseline').val() >= 0 && newData.child('rebaseline').val() <= 1000000"
+      }
+    }
+  }
+}
